@@ -5,6 +5,12 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Memory", "Memory\Memory.vcxproj", "{520EC09C-8302-4577-8375-1D03444ECDBC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AKOperator", "AKOperator\AKOperator.vcxproj", "{CE471EBE-10E5-456E-A8ED-CCFA42AE4800}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "과제란", "과제란", "{78127404-FD4B-4CD9-93C0-4E6CAAF1389B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Solution1", "Solution1\Solution1.vcxproj", "{7277203E-2B6D-4B41-8F6E-2C93E97C4581}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,9 +27,28 @@ Global
 		{520EC09C-8302-4577-8375-1D03444ECDBC}.Release|x64.Build.0 = Release|x64
 		{520EC09C-8302-4577-8375-1D03444ECDBC}.Release|x86.ActiveCfg = Release|Win32
 		{520EC09C-8302-4577-8375-1D03444ECDBC}.Release|x86.Build.0 = Release|Win32
+		{CE471EBE-10E5-456E-A8ED-CCFA42AE4800}.Debug|x64.ActiveCfg = Debug|x64
+		{CE471EBE-10E5-456E-A8ED-CCFA42AE4800}.Debug|x64.Build.0 = Debug|x64
+		{CE471EBE-10E5-456E-A8ED-CCFA42AE4800}.Debug|x86.ActiveCfg = Debug|Win32
+		{CE471EBE-10E5-456E-A8ED-CCFA42AE4800}.Debug|x86.Build.0 = Debug|Win32
+		{CE471EBE-10E5-456E-A8ED-CCFA42AE4800}.Release|x64.ActiveCfg = Release|x64
+		{CE471EBE-10E5-456E-A8ED-CCFA42AE4800}.Release|x64.Build.0 = Release|x64
+		{CE471EBE-10E5-456E-A8ED-CCFA42AE4800}.Release|x86.ActiveCfg = Release|Win32
+		{CE471EBE-10E5-456E-A8ED-CCFA42AE4800}.Release|x86.Build.0 = Release|Win32
+		{7277203E-2B6D-4B41-8F6E-2C93E97C4581}.Debug|x64.ActiveCfg = Debug|x64
+		{7277203E-2B6D-4B41-8F6E-2C93E97C4581}.Debug|x64.Build.0 = Debug|x64
+		{7277203E-2B6D-4B41-8F6E-2C93E97C4581}.Debug|x86.ActiveCfg = Debug|Win32
+		{7277203E-2B6D-4B41-8F6E-2C93E97C4581}.Debug|x86.Build.0 = Debug|Win32
+		{7277203E-2B6D-4B41-8F6E-2C93E97C4581}.Release|x64.ActiveCfg = Release|x64
+		{7277203E-2B6D-4B41-8F6E-2C93E97C4581}.Release|x64.Build.0 = Release|x64
+		{7277203E-2B6D-4B41-8F6E-2C93E97C4581}.Release|x86.ActiveCfg = Release|Win32
+		{7277203E-2B6D-4B41-8F6E-2C93E97C4581}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7277203E-2B6D-4B41-8F6E-2C93E97C4581} = {78127404-FD4B-4CD9-93C0-4E6CAAF1389B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C95C3A9D-65BA-4878-BAD8-21CE3B4D42A3}
