@@ -21,15 +21,30 @@ void StringReverse(char* _Ptr) {
 		_Ptr[Length - i - 1] = _Ptr[i];
 		_Ptr[i] = Temp;
 	}
+
 }
 
 
 int main()
 {
-	char Arr[10] = "abcdef";
+	char Arr[10] = "abc";
+
+	if (Arr[3] == Arr[7]) {
+		printf("aa");
+	}
 
 	int result = StringCount(Arr);
 	StringReverse(Arr);
+
+	for (
+		int i = 0;
+		i < 10;
+		++i
+		) {
+
+		if (0 != i % 2) continue;
+
+	}
 
 }
 
@@ -402,6 +417,24 @@ int main()
 //			실행 장소에 붙여넣기 해준다.
 //			inline ? 치환이다.
 //
+//			 중단점은 정말 습관처럼 걸어야 한다.
+//			
+//			for문이나 while문 안에서 break를 본 적이 있을텐데
+//			즉시 반복문을 종료하라는 뜻이다.
+//			
+//			continue는
+//			예) i가 짝수일 때만 무언가를 하고싶다
+//			
+//			for (int i = 0; i < 10; ++i) {
+//				if (0 != (i % 2)) {
+//					나머지가 0이 아니면 홀수라는 것 이므로
+//						continue;       반복문의 처음으로 돌아감
+//				}
+//			
+//			}
+//			
+//			continue는 while에서 조건문으로 가고 for에서는 증감문으로 바로 간다.
+
 //
 //
 //
