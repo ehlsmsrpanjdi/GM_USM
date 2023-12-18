@@ -35,9 +35,9 @@ int main()
 
 	int result = StringCount(Arr);
 	StringReverse(Arr);
-
+	int i = 0;
 	for (
-		int i = 0;
+		 i = 0;
 		i < 10;
 		++i
 		) {
