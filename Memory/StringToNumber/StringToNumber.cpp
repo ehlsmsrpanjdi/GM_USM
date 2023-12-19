@@ -56,7 +56,7 @@ int FirstNum(int Num, int Index)// 그 값의 첫 번째 수 알기
 */
 
 
-void NumberToString(int Number, char* _Ptr) {
+void NumberToString(int Number, char* _Ptr) {  //int*, char** 타입의 주소값 변수 생성하고
 	int Temp = 0;
 	int Size1 = SizeofInt(Number);//그 수의 크기
 	int Size2 = Size1;
@@ -104,16 +104,39 @@ int StringToNumber(const char* const _NumberString) {
 	return Num;
 }
 
+void asdf(int a, int a0) {
+	__int64 b = reinterpret_cast<__int64>(&a);
+	__int64 c = reinterpret_cast<__int64>(&a0);
+	int* Ptr = &a;
+	int* Ptr1 = Ptr + 2;
+}
+
 int main()
 {
 	char Ch[10] = "1234";
+	/*
+	* main함수의 스택 메모리에		위치
+	* 10byte의					크기
+	* ch[]타입의 변수가			형태
+	* "1234"가 들어갔다.			값
+	*/
 
 	char Arr[100] = {};
 
 	int Num = 100;
 
+	asdf(30, 20);
+	/*
+	* 30, 20의 변수가 asdf함수의 스택 메모리에 생성
+	그런데 그 크기는 8byte 형태씩 크기를 먹는다.
+	어떠한 타입의 변수가 들어가도 8바이트씩 무조건
 
-	NumberToString(1234, Arr);
-	//int Result1 = StringToNumber(Ch);
-	//int Result2 = MyStringToNumber(Ch);
+	*/
+
+
+
+	//	NumberToString(1234, Arr);
+		//새로운 스택 메모리 형성
+		//int Result1 = StringToNumber(Ch);
+		//int Result2 = MyStringToNumber(Ch);
 }
