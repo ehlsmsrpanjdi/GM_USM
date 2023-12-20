@@ -26,12 +26,13 @@ int CharConvert(char* _String, char _PrevCh, char _NextCh) {
 
 int main()
 {
-	char Arr[30] = "aabbccddeeffgg";
-	const char* ar = "asdf";
-	int vv = 8;
+	int a = 0b0000000001100110;
+	char* Ptr = reinterpret_cast<char*>(a);
 
-	__int64 pAr = reinterpret_cast<__int64>(ar);
-	__int64 pArr = reinterpret_cast<__int64>(Arr);
-	__int64 pv = reinterpret_cast<__int64>(&vv);
-	//int a = CharConvert(Arr, 'b', 'd');
+	Ptr[0];
+
+	Ptr[1];
+	Ptr[2];
+	Ptr[3];
+
 }
