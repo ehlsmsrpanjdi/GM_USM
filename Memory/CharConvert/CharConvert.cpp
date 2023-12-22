@@ -26,13 +26,11 @@ int CharConvert(char* _String, char _PrevCh, char _NextCh) {
 
 int main()
 {
-	int a = 0b0000000001100110;
-	char* Ptr = reinterpret_cast<char*>(a);
+	char ch[2][3] = { 'a','b','c','d','e','f' };
 
-	Ptr[0];
+	int arr[3][3] = {1,2,3,4,5,6,7,8,9};
 
-	Ptr[1];
-	Ptr[2];
-	Ptr[3];
+
+	printf_s("%d", arr[0]);
 
 }
