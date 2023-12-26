@@ -3,38 +3,10 @@
 
 #include <iostream>
 
-class MyInt {
-public:
-
-	MyInt() {
-
-	}
-
-	MyInt(int _Value)
-		:Value(_Value)
-	{
-
-	}
-
-	MyInt operator-(const MyInt& _Other) {
-
-		return Value - _Other.Value;
-	}
-
-private:
-	int Value;
-
-
-};
-
-void test(int& asdf) {
-	int a = asdf;
-}
 
 int main()
 {
-	int* a;
-	test(*a);
 
-
+	const int Cvalue = 0;
+	const int* ptr = &Cvalue;
 }
