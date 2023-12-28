@@ -1,10 +1,10 @@
 #pragma once
-
+#include "ConsoleScreen.h"
 #include "Math.h"
-#include "Console.h"
 
 class Galaga
 {
 public:
 	void GalagaWallDraw(ConsoleScreen& _Screen);
 };
+

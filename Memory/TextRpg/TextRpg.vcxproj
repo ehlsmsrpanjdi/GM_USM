@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8f9d7b8f-c4bb-4e5f-8562-5188a15d3133}</ProjectGuid>
-    <RootNamespace>TextRpgStart</RootNamespace>
+    <ProjectGuid>{be03d7c9-02c0-4833-a6bf-67d3ae2c3f69}</ProjectGuid>
+    <RootNamespace>TextRpg</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,16 +127,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Console.cpp" />
-    <ClCompile Include="Galaga.cpp" />
+    <ClCompile Include="FightUnit.cpp" />
+    <ClCompile Include="FightZone.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="TextRpgStart.cpp" />
+    <ClCompile Include="StatusUnit.cpp" />
+    <ClCompile Include="TextRpg.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Console.h" />
-    <ClInclude Include="Galaga.h" />
-    <ClInclude Include="Math.h" />
+    <ClInclude Include="FightUnit.h" />
+    <ClInclude Include="FightZone.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="MyMath.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="StatusUnit.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

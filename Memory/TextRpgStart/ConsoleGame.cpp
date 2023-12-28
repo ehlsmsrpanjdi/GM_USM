@@ -2,48 +2,11 @@
 //
 
 #include <iostream>
-#include "Player.h"
+#include <conio.h>
+#include "ConsoleScreen.h"
 #include "Galaga.h"
-#include "Console.h"
-// 0. 메모리
-
-// 문제점.
-// 1. 코드 정리가 안된다.
-// 2. 반복적 코드가 많다.
-// 3. 메모리를 동적으로 이용이 불가능하다. 
-//    불가능하다. (화면의 크기 총알의 개수)
-
-
-
-
-class Bullet
-{
-public:
-	Bullet(const int2& _StartPos, char _RenderChar)
-		: Pos(_StartPos), RenderChar(_RenderChar)
-	{
-	}
-
-	bool& GetIsFireRef()
-	{
-		return IsFire;
-	}
-
-	inline int2 GetPos()
-	{
-		return Pos;
-	}
-
-	inline char GetRenderChar()
-	{
-		return RenderChar;
-	}
-
-private:
-	bool IsFire = false;
-	int2 Pos = { 0, 0 };
-	char RenderChar = '@';
-};
+#include "Bullet.h"
+#include "Player.h"
 
 // 함수의 실행 메모리는 고정되어 있어야 한다.
 // => exe파일에 적혀있다. main함수는 100바이트 사용한다.
@@ -73,7 +36,7 @@ int main()
 	Galaga NewGalaga = Galaga();
 
 	// Player가 bool& _OtherFire; 총알이 무조건 먼저 만들어져야 한다.
-	Bullet NewBullet = Bullet({ 0,0 }, '^');
+	Bullet NewBullet = Bullet({0,0}, '^');
 	// NewBullet.GetIsFireRef()
 	Player NewPlayer = Player({ ScreenXHalf, ScreenYHalf }, '@');
 
