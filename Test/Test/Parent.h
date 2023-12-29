@@ -5,10 +5,14 @@ class Parent
 public:
 	Parent();
 
-	int att = 10;
+	int gold = 10;
 
-	virtual int getatt() {
-		return att;
+	int getgold() {
+		return gold;
+	}
+
+	void setgold(int _gold) {
+		gold = _gold;
 	}
 
 };

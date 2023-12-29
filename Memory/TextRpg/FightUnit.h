@@ -9,7 +9,7 @@ public:
 	// Get
 	inline bool IsDeath() const
 	{
-		return Hp <= 0;
+		return GetHp() <= 0;
 	}
 
 	inline int GetMinAtt() const
@@ -19,12 +19,24 @@ public:
 
 	virtual int GetRandomAtt();
 
+	inline int GetHp() const override {
+		return Hp;
+	}
+
+	inline void SetHp(int _Hp) override {
+		Hp = _Hp;
+	}
+
 	int GetRandomSpeed() const;
 
 	// Fight¿ë ÇÔ¼ö
 	void DamageLogic(FightUnit& _Unit);
 
 	void DamageRender();
+
+	//virtual inline int DropGold() const {
+	//	return Gold;
+	//}
 
 protected:
 	int CurDamage = 0;

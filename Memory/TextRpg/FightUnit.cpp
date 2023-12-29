@@ -21,11 +21,11 @@ int FightUnit::GetRandomSpeed() const
 
 void FightUnit::DamageLogic(FightUnit& _Unit)
 {
-	Hp -= _Unit.GetRandomAtt();
+	SetHp(GetHp() - _Unit.GetRandomAtt());
 
-	if (0 > Hp)
+	if (0 > GetHp())
 	{
-		Hp = 0;
+		SetHp(0);
 	}
 }
 

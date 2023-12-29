@@ -28,12 +28,12 @@ void Town::WeaponUp(Player& _Player)
     switch (Select)
     {
     case '1': {
-        if (_Player.GetGold() < 1) {
+        if (_Player.GetGold() < _Player.Weapon.GetEquipUp()) {
             printf_s("골드가 부족합니다");
             _getch();
             return;
         }
-        _Player.SetGold(_Player.GetGold() - 1);
+        _Player.SetGold(_Player.GetGold() - _Player.Weapon.GetEquipUp());
         system("cls");
         printf_s("%d만큼 무기가 강화되어 있습니다.\n", _Player.Weapon.GetEquipUp());
         _getch();
@@ -68,7 +68,7 @@ void Town::In(Player& _Player)
         _Player.StatusRender();
         printf_s("마을에서 무엇을 하시겠습니까.\n");
         printf_s("%d만큼의 골드를 소지중입니다.\n", _Player.GetGold());
-        printf_s("1. 강화. (1골드 소모)\n");
+        printf_s("1. 강화. (강화비용 만큼의 골드가 소모됩니다. [%d])\n",_Player.Weapon.GetEquipUp());
         printf_s("2. 치료. (3골드 소모)\n");
         printf_s("3. 나간다.\n");
         int Select = _getch();

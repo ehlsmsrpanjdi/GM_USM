@@ -5,9 +5,12 @@
 #include "ChildChild.h"
 int main()
 {
-	Child child;
-	int b = child.getatt();
-	int a = 0;
-} 
+	Parent a = Parent();
+
+	Child b = Child();
+
+	b.test();
+
+}
 
 

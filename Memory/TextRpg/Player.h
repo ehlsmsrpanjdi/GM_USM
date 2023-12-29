@@ -21,8 +21,12 @@ public:
 	// 지금은 동적할당을 배우지 않았기 때문에 
 	Weapon Weapon;
 
-	inline int GetHp() const {
+	inline int GetHp() const override {
 		return Hp;
+	}
+
+	inline void SetHp(int _Hp) override {
+		Hp = _Hp;
 	}
 
 	inline int GetGold() const{
@@ -34,7 +38,7 @@ public:
 	}
 
 	inline void Heal() {
-		Hp = GetMaxHp();
+		SetHp(GetMaxHp());
 		SetGold(GetGold() - 3);
 	}
 
@@ -43,17 +47,20 @@ public:
 		return MaxHp;
 	}
 
-	inline int GetMinAtt() const {
+	inline int GetMinAtt() const override {
 		return MinAtt + Weapon.GetAtt();
 	}
-	inline int GetMaxAtt() const {
+	inline int GetMaxAtt() const override {
 		return MaxAtt + Weapon.GetAtt();
 	}
 
 
 protected:
 	int GetRandomAtt() override;
-	int MaxHp = Hp;
-	int Gold = 10;
+	int MaxHp = 100;
+	int Hp = 100;
+	int Gold = 100;
+	int Exp = 0;
+	int MaxExp = 100;
 };
 

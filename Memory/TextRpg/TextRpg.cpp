@@ -16,6 +16,7 @@
 
 int main()
 {
+
     int Value = 0;
     __int64 Seed = reinterpret_cast<__int64>(&Value);
     srand(static_cast<unsigned int>(Seed));

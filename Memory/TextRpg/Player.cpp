@@ -26,7 +26,7 @@ void Player::StatusRender()
 
 	printf_s("\n");
 	printf_s("공격력 %d~%d\n", GetMinAtt(), GetMaxAtt());
-	printf_s("체력 %d\n", Hp);
+	printf_s("체력 %d\n", GetHp());
 
 	for (int i = 0; i < 50; i++)
 	{

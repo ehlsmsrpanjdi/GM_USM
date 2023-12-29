@@ -6,6 +6,7 @@
 FightZone::FightZone()
 {
 	NewMonster.SetName("Monster");
+	EliteMonster.SetName("EliteMonster");
 }
 
 bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _Top, FightUnit& _Bot)
@@ -21,7 +22,8 @@ bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _To
 	_First.DamageRender();
 	if (true == _Second.IsDeath())
 	{
-		printf_s("게임 종료\n");
+		
+		_getch();
 		return true;
 	}
 
@@ -38,7 +40,8 @@ bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _To
 	_Second.DamageRender();
 	if (true == _First.IsDeath())
 	{
-		printf_s("게임 종료\n");
+		printf_s("몬스터 사망\n");
+		_getch();
 		return true;
 	}
 	{
@@ -52,30 +55,39 @@ bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _To
 void FightZone::In(Player& _Player)
 {
 	NewMonster.SetHp();
+	EliteMonster.SetHp(150);
+	FightUnit* Ptr;
+	if (rand() % 2) {
+		Ptr = &NewMonster;
+	}
+	else {
+		Ptr = &EliteMonster;
+	}
+
 	while (true)
 	{
 		_Player.StatusRender();
-		NewMonster.StatusRender();
+		Ptr->StatusRender();
 
 		// 선공 후공이 결정 나고
 		// 조건에 따라서
 
 		bool IsEnd = false;
 
-		if (_Player.GetRandomSpeed() >= NewMonster.GetRandomSpeed())
+		if (_Player.GetRandomSpeed() >= Ptr->GetRandomSpeed())
 		{
 			printf_s("플레이어의 선공\n");
-			IsEnd = FightLogic(_Player, NewMonster, _Player, NewMonster);
+			IsEnd = FightLogic(_Player, *Ptr, _Player, *Ptr);
 		}
 		else 
 		{
 			printf_s("몬스터의 선공\n");
-			IsEnd = FightLogic(NewMonster, _Player, _Player, NewMonster);
+			IsEnd = FightLogic(*Ptr, _Player, _Player, *Ptr);
 		}
 
 			if (true == IsEnd)
 			{
-				_Player.SetGold(NewMonster.DropGold() + _Player.GetGold());
+				_Player.SetGold(Ptr->DropGold() + _Player.GetGold());
 				return;
 			}
 	}

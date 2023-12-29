@@ -3,10 +3,15 @@
 class Child : public Parent
 {
 public:
+	Child() {
+		gold = 30;
+	}
 
-	int att = 20;
-	int getatt() override{
-		return att;
+
+
+	void test() {
+		Child::gold;
+		Parent::gold;
 	}
 };
 

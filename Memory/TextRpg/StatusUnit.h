@@ -16,6 +16,14 @@ public:
 		return Gold;
 	}
 
+	virtual inline int GetHp() const {
+		return Hp;
+	}
+
+	virtual inline void SetHp(int _Hp) {
+		Hp = _Hp;
+	}
+
 protected:
 	int Hp = 100;
 	int MinAtt = 10;
