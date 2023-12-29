@@ -5,21 +5,57 @@
 #include "Player.h"
 #include "Monster.h"
 #include "FightZone.h"
+#include <conio.h>
+#include "Town.h"
 
-// 데미지가 Random Damage가 되게 해라.
+// 0. SetName이 되게 해라.
 
-// 선공 후공이 랜덤이 되게 만들어라.
+// 1. 데미지가 Random Damage가 되게 해라.
 
-// set name만들기
+// 2. 선공 후공이 랜덤이 되게 만들어라.
 
 int main()
 {
-    Player NewPlayer = Player();
+    int Value = 0;
+    __int64 Seed = reinterpret_cast<__int64>(&Value);
+    srand(static_cast<unsigned int>(Seed));
 
+    Player NewPlayer = Player();
     NewPlayer.SetName("Player");
 
-    FightZone NewZone;
+    FightZone NewFightZone;
+    Town NewTownZone;
 
-    NewZone.Fight(NewPlayer);
+
+    // MainMenu
+    while (true)
+    {
+        if (NewPlayer.GetHp() <= 0) {
+            printf_s("플레이어 사망");
+            return 0;
+        }
+        NewPlayer.StatusRender();
+        printf_s("어디로 가시겠습니다.\n");
+        printf_s("1. 마을.\n");
+        printf_s("2. 사냥터.\n");
+        int Select =_getch();
+
+        system("cls");
+
+        switch (Select)
+        {
+        case '1':
+            NewTownZone.In(NewPlayer);
+            break;
+        case '2':
+            NewFightZone.In(NewPlayer);
+            break;
+        default:
+            break;
+        }
+
+        system("cls");
+
+    }
 
 }

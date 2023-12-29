@@ -2,17 +2,12 @@
 //
 
 #include <iostream>
-
+#include "ChildChild.h"
 int main()
 {
-	while (true) {
-
-		printf_s("%d\n",rand()%20);
-
-		if (getchar() == ' ') {
-			break;
-		}
+	Child child;
+	int b = child.getatt();
+	int a = 0;
+} 
 
 
-	}
-}

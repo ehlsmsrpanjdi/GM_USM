@@ -12,6 +12,14 @@ public:
 		return Hp <= 0;
 	}
 
+	inline int GetMinAtt() const
+	{
+		return MinAtt;
+	}
+
+	virtual int GetRandomAtt();
+
+	int GetRandomSpeed() const;
 
 	// Fight¿ë ÇÔ¼ö
 	void DamageLogic(FightUnit& _Unit);
@@ -19,6 +27,7 @@ public:
 	void DamageRender();
 
 protected:
+	int CurDamage = 0;
 
 private:
 };

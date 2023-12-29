@@ -1,15 +1,6 @@
 #include "StatusUnit.h"
 #include <iostream>
-#include "MyMath.h"
 
-void StatusUnit::SetName(const char* _Name)
-{
-	int Index = 0;
-	while (_Name[Index]) {
-		Name[Index] = _Name[Index];
-		++Index;
-	}
-}
 
 void StatusUnit::StatusRender()
 {
@@ -22,7 +13,7 @@ void StatusUnit::StatusRender()
 	}
 
 	printf_s("\n");
-	printf_s("공격력 %d~%d\n", GetMinAtt(), GetMaxAtt());
+	printf_s("공격력 %d~%d\n", MinAtt, MaxAtt);
 	printf_s("체력 %d\n", Hp);
 
 	for (int i = 0; i < 50; i++)
@@ -33,13 +24,3 @@ void StatusUnit::StatusRender()
 	printf_s("\n");
 }
 
-int StatusUnit::GetDamage()
-{
-	SetPresentDamage((rand() % MinAtt + 1) + (MaxAtt - MinAtt));
-	return GetpresentDamage();
-}
-
-int StatusUnit::GetSpeed()
-{
-	return rand() % Speed;
-}

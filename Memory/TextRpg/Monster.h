@@ -4,10 +4,15 @@
 class Monster : public FightUnit
 {
 public:
-	Monster() {
-		Gold = 10;
-		SetName("Monster");
+
+	inline void SetHp() {
+		Hp = 100;
 	}
-	int GetGold() const;
+
+	inline int DropGold() const override {
+		return Gold;
+	}
+protected:
+	int Gold = 10;
 };
 

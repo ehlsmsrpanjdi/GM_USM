@@ -1,6 +1,12 @@
 #include "FightZone.h"
 #include <conio.h>
 #include <iostream>
+#include "Player.h"
+
+FightZone::FightZone()
+{
+	NewMonster.SetName("Monster");
+}
 
 bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _Top, FightUnit& _Bot)
 {
@@ -9,8 +15,8 @@ bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _To
 	}
 
 	system("cls");
-	_Second.DamageLogic(_First); //second가 맞는 친구  
-	_Top.StatusRender();		//fisrt가 때린 친구
+	_Second.DamageLogic(_First);
+	_Top.StatusRender();
 	_Bot.StatusRender();
 	_First.DamageRender();
 	if (true == _Second.IsDeath())
@@ -43,30 +49,33 @@ bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _To
 	return false;
 }
 
-void FightZone::Fight(FightUnit& _Player)
+void FightZone::In(Player& _Player)
 {
+	NewMonster.SetHp();
 	while (true)
 	{
 		_Player.StatusRender();
 		NewMonster.StatusRender();
-
 
 		// 선공 후공이 결정 나고
 		// 조건에 따라서
 
 		bool IsEnd = false;
 
-		if(_Player.GetSpeed() >= NewMonster.GetSpeed()){
-			printf_s("플레이어의 선공");
+		if (_Player.GetRandomSpeed() >= NewMonster.GetRandomSpeed())
+		{
+			printf_s("플레이어의 선공\n");
 			IsEnd = FightLogic(_Player, NewMonster, _Player, NewMonster);
 		}
-		else {
-			printf_s("몬스터의 선공");
-			IsEnd = FightLogic(NewMonster, _Player, NewMonster, _Player);
+		else 
+		{
+			printf_s("몬스터의 선공\n");
+			IsEnd = FightLogic(NewMonster, _Player, _Player, NewMonster);
 		}
 
 			if (true == IsEnd)
 			{
+				_Player.SetGold(NewMonster.DropGold() + _Player.GetGold());
 				return;
 			}
 	}

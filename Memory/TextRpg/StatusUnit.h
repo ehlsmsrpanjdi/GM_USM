@@ -1,37 +1,26 @@
 #pragma once
-class StatusUnit
+#include "NameUnit.h"
+
+class StatusUnit : public NameUnit
 {
 public:
-	void SetName(const char* _Name);
-	void StatusRender();
-	int GetDamage();
-	int GetSpeed();
-
-	inline int GetMinAtt() const
-	{
+	virtual void StatusRender();
+	virtual inline int GetMinAtt() const {
 		return MinAtt;
 	}
-
-	inline int GetMaxAtt() const {
+	virtual inline int GetMaxAtt() const {
 		return MaxAtt;
 	}
 
-	inline void SetPresentDamage(int _PresentDamage) {
-		PresentDamage = _PresentDamage;
-	}
-
-	inline int GetpresentDamage() const {
-		return PresentDamage;
+	virtual inline int DropGold() const {
+		return Gold;
 	}
 
 protected:
-	char Name[100] = "None";
 	int Hp = 100;
 	int MinAtt = 10;
 	int MaxAtt = 20;
 	int Speed = 20; // 0~20
 	int Gold = 0;
-	int PresentDamage = 0;
-
 };
 
