@@ -6,7 +6,6 @@
 FightZone::FightZone()
 {
 	NewMonster.SetName("Monster");
-	EliteMonster.SetName("EliteMonster");
 }
 
 bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _Top, FightUnit& _Bot)
@@ -22,8 +21,7 @@ bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _To
 	_First.DamageRender();
 	if (true == _Second.IsDeath())
 	{
-		
-		_getch();
+		printf_s("게임 종료\n");
 		return true;
 	}
 
@@ -40,8 +38,7 @@ bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _To
 	_Second.DamageRender();
 	if (true == _First.IsDeath())
 	{
-		printf_s("몬스터 사망\n");
-		_getch();
+		printf_s("게임 종료\n");
 		return true;
 	}
 	{
@@ -54,40 +51,50 @@ bool FightZone::FightLogic(FightUnit& _First, FightUnit& _Second, FightUnit& _To
 
 void FightZone::In(Player& _Player)
 {
-	NewMonster.SetHp();
-	EliteMonster.SetHp(150);
-	FightUnit* Ptr;
-	if (rand() % 2) {
-		Ptr = &NewMonster;
-	}
-	else {
-		Ptr = &EliteMonster;
-	}
+	NewMonster.FightStart(_Player);
+	//_Player.FightStart(NewMonster);
 
 	while (true)
 	{
 		_Player.StatusRender();
-		Ptr->StatusRender();
+		NewMonster.StatusRender();
 
 		// 선공 후공이 결정 나고
 		// 조건에 따라서
 
 		bool IsEnd = false;
 
-		if (_Player.GetRandomSpeed() >= Ptr->GetRandomSpeed())
+		if (_Player.GetRandomSpeed() >= NewMonster.GetRandomSpeed())
 		{
 			printf_s("플레이어의 선공\n");
-			IsEnd = FightLogic(_Player, *Ptr, _Player, *Ptr);
+			IsEnd = FightLogic(_Player, NewMonster, _Player, NewMonster);
 		}
 		else 
 		{
 			printf_s("몬스터의 선공\n");
-			IsEnd = FightLogic(*Ptr, _Player, _Player, *Ptr);
+			IsEnd = FightLogic(NewMonster, _Player, _Player, NewMonster);
 		}
 
 			if (true == IsEnd)
 			{
-				_Player.SetGold(Ptr->DropGold() + _Player.GetGold());
+				if (false == _Player.IsDeath())
+				{
+
+					_Player.FightEnd(NewMonster);
+
+
+					//NewMonster.HpReset();
+					//NewMonster.RandomGold(10000, 100000);
+					int Test = _getch();
+
+				}
+
+				if (true == _Player.IsDeath()) {
+					NewMonster.FightEnd(_Player);
+					int Test = _getch();
+
+				}
+
 				return;
 			}
 	}

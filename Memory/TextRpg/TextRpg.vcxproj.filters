@@ -16,9 +16,6 @@
     <ClCompile Include="FightUnit.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="TextRpg.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>Component</Filter>
     </ClCompile>
@@ -30,6 +27,9 @@
     </ClCompile>
     <ClCompile Include="ZoneBase.cpp">
       <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="TextRpg.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +73,9 @@
     </Filter>
     <Filter Include="Map">
       <UniqueIdentifier>{15eb48f4-50fc-404e-9951-ede1fc2ef220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{81375c0c-b8e5-43da-9acf-59195b10fa21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

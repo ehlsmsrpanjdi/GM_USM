@@ -8,30 +8,53 @@ Player::Player()
 	Weapon.SetAtt(10);
 }
 
+void Player::StatusRenderStart()
+{
+	LevelUpExp = Level * 1000;
+	printf_s("레벨 %d (%d / %d)\n", Level, GetExp(), LevelUpExp);
+}
+
 int Player::GetRandomAtt()
 {
-	CurDamage = FightUnit::GetRandomAtt() + Weapon.GetAtt();
+	CurDamage = FightUnit::GetRandomAtt() + Weapon.GetAtt() + Weapon.GetEquipUp();
 	return CurDamage;
 }
 
-void Player::StatusRender()
+void Player::FightEnd(FightUnit& _Ohter)
 {
-	// 메모리에 관련된 명확한 설명은 안한 상태지만
-	// 자신의 맴버함수에서 자신의 맴버변수는 자유롭게 사용이 가능합니다.
-	int Size = printf_s("%s ", Name);
-	for (int i = 0; i < 50 - Size; i++)
+	int MonsterGold = _Ohter.GetGold();
+	printf_s("플레이어가 %d 골드를 벌었습니다.\n", MonsterGold);
+	AddGold(MonsterGold);
+
+	int MonsterExp = _Ohter.GetExp();
+	printf_s("플레이어가 %d 경험치를 벌었습니다.\n", MonsterExp);
+	AddExp(MonsterExp);
+	
+	int PlayerExp = GetExp();
+
+	// 나의 겸험치
+	while (Exp > LevelUpExp)
 	{
-		printf_s("-");
+		Exp -= LevelUpExp;
+		LevelUpExp = Level * 1000;
+
+		++Level;
+		MaxHp += 100;
+		HpReset();
+		MinAtt += 10;
+		MaxAtt += 10;
 	}
 
-	printf_s("\n");
-	printf_s("공격력 %d~%d\n", GetMinAtt(), GetMaxAtt());
-	printf_s("체력 %d\n", GetHp());
+	// 몬스터가 준 경험치죠 _Ohter.GetExp();
+	// AddExp(_Ohter.GetExp());
+	// 나의 경험치 GetExp();
 
-	for (int i = 0; i < 50; i++)
-	{
-		printf_s("-");
-	}
+	// 나의 능력치를 얼마나 상승시킬지.
+	// 다 기획적인 거죠. 상승만 시키세요.
+	
+	// LevelUpExp 비교를 해서
 
-	printf_s("\n");
+
+
+	// Monster
 }

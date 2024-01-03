@@ -1,14 +1,22 @@
 #include "Monster.h"
+#include <iostream>
 
-Monster::Monster()
+void Monster::StatusRenderEnd()
 {
+	printf_s("경험치 : %d\n", GetExp());
 }
 
-Monster::Monster(int _Hp, int _MinAtt, int _MaxAtt, int _Gold)
+void Monster::FightStart(FightUnit& _Player)
 {
-	SetHp(_Hp);
-	MinAtt = _MinAtt;
-	MaxAtt = _MaxAtt;
-	Gold = _Gold;
+	HpReset(/*this*/);
+	RandomGold(1000, 10000);
+	RandomExp(10000, 100000);
 }
 
+void Monster::FightEnd(/*Monster* const this,*/ FightUnit& _Player)
+{
+	// 랜덤하게 경험치를 정해야 한다.
+
+	/*NewMonster.*/
+	/*this->*/
+}

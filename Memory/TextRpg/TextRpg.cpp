@@ -16,7 +16,6 @@
 
 int main()
 {
-
     int Value = 0;
     __int64 Seed = reinterpret_cast<__int64>(&Value);
     srand(static_cast<unsigned int>(Seed));
@@ -24,23 +23,40 @@ int main()
     Player NewPlayer = Player();
     NewPlayer.SetName("Player");
 
-    FightZone NewFightZone;
+    // FightZone을 3개 만든다.
+    // 초급 사냥터
+    // 중급 사냥터
+    // 고급 사냥터
+
+    // 초급의 몬스터는 Min 5 max 15 Hp 100
+    // 중급의 몬스터는 Min 10 max 20 Hp 200
+    // 고급의 몬스터는 Min 20 max 40 Hp 300
+
+    // 선택지로 나와야 한다.
+    // "1. 마을.\n";
+    // "2. 초급 사냥터.\n";
+    // "3. 중급 사냥터.\n";
+    // "4. 고급 사냥터.\n";
+
+
+    FightZone NewFightZone[3];
+    NewFightZone[0].NewMonster.StatusInit(100, 5, 15);
+    NewFightZone[1].NewMonster.StatusInit(200, 10, 20);
+    NewFightZone[2].NewMonster.StatusInit(300, 20, 40);
+
     Town NewTownZone;
 
 
     // MainMenu
     while (true)
     {
-        if (NewPlayer.GetHp() <= 0) {
-            printf_s("플레이어 사망");
-            return 0;
-        }
         NewPlayer.StatusRender();
         printf_s("어디로 가시겠습니다.\n");
         printf_s("1. 마을.\n");
-        printf_s("2. 사냥터.\n");
+        printf_s("2. 초급 사냥터.\n");
+        printf_s("3. 중급 사냥터.\n");
+        printf_s("4. 고급 사냥터.\n");
         int Select =_getch();
-
         system("cls");
 
         switch (Select)
@@ -49,8 +65,13 @@ int main()
             NewTownZone.In(NewPlayer);
             break;
         case '2':
-            NewFightZone.In(NewPlayer);
+        case '3':
+        case '4':
+        {
+            int FightSelect = Select - '2';
+            NewFightZone[FightSelect].In(NewPlayer);
             break;
+        }
         default:
             break;
         }

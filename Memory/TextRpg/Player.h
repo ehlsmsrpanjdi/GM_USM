@@ -21,46 +21,17 @@ public:
 	// 지금은 동적할당을 배우지 않았기 때문에 
 	Weapon Weapon;
 
-	inline int GetHp() const override {
-		return Hp;
-	}
+	void FightEnd(FightUnit& _Ohter) override;
 
-	inline void SetHp(int _Hp) override {
-		Hp = _Hp;
-	}
-
-	inline int GetGold() const{
-		return Gold;
-	}
-
-	inline void SetGold(int _Gold) {
-		Gold = _Gold;
-	}
-
-	inline void Heal() {
-		SetHp(GetMaxHp());
-		SetGold(GetGold() - 3);
-	}
-
-	void StatusRender();
-	inline int GetMaxHp() const {
-		return MaxHp;
-	}
-
-	inline int GetMinAtt() const override {
-		return MinAtt + Weapon.GetAtt();
-	}
-	inline int GetMaxAtt() const override {
-		return MaxAtt + Weapon.GetAtt();
-	}
-
+	void StatusRenderStart() override;
 
 protected:
 	int GetRandomAtt() override;
-	int MaxHp = 100;
-	int Hp = 100;
-	int Gold = 100;
-	int Exp = 0;
-	int MaxExp = 100;
+
+private:
+	int Level = 1;
+
+	// 이건 여기에 도달하면 나는 레벨업한다.
+	int LevelUpExp = 0;
 };
 

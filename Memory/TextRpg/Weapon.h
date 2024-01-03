@@ -6,7 +6,7 @@ class Weapon : public NameUnit
 public:
 	inline int GetAtt() const
 	{
-		return Att + GetEquipUp();
+		return Att;
 	}
 
 	inline void SetAtt(int _Att) 
@@ -14,17 +14,25 @@ public:
 		Att = _Att;
 	}
 
-	inline int GetEquipUp() const {
+	inline int GetEquipUp() const
+	{
 		return EquipUp;
 	}
 
-	inline void SetEquipUp(int _EquipUp) {
-		EquipUp = _EquipUp;
+	inline void EquipLevelUp()
+	{
+		++EquipUp;
 	}
 
-	int Upgrade() const;
+	inline void EquipLevelDown(int _Level)
+	{
+		EquipUp -= _Level;
+	}
 
-	void UpgradeResult();
+	inline void EquipLevelReset()
+	{
+		EquipUp = 0;
+	}
 
 private:
 	int EquipUp = 0;
