@@ -3,14 +3,47 @@
 
 #include <iostream>
 #include "ChildChild.h"
+
+class A {
+	int test() {
+		int a;
+		return 1;
+	}
+
+	int test1() {
+		return 1;
+	}
+
+	int test2() {
+		return 1;
+	}
+		
+
+};
+
+class B //: public A{
+{
+	void test() {
+
+	}
+};
+
+
+
 int main()
 {
-	Parent a = Parent();
 
-	Child b = Child();
+	int* test = new int[100];
 
-	b.test();
+	delete test;
+
+	int a = 30;
+
+	test = &a;
+
+	int b = 10;
 
 }
+
 
 
