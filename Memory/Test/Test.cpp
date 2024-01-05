@@ -4,17 +4,49 @@
 #include <iostream>
 #include <testengine/TestConsoleScreen.h>
 #include <..\Memory\TestPhysics\Gravity.h>
+#include <Windows.h>
+#include <assert.h>
 
+int function(int a, int b, int c) {
+	return a;
+}
+
+int function1(int a) {
+	return a;
+}
+
+int function2(int a) {
+	return a;
+}
+
+int function3(int a) {
+	return a;
+}
+
+class A {
+public:
+	void test() {
+		int a = 0;
+	}
+	void test2() {
+
+	}
+	void test3() {
+
+	}
+};
+
+
+
+#define Ten 10
+
+#define Multi(Value) Value * Value
 int main()
 {
-	TestConsoleScreen Screen = TestConsoleScreen();
-	Screen.test();
+	int a = Ten;
+	int b = Multi(a);
 
-	Gravity gravity;
-	gravity.Test();
-	int a = gravity.F;
 
-	int c = 0;
 }
 
 
