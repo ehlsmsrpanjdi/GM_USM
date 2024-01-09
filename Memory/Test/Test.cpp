@@ -95,8 +95,7 @@ int main()
 {
 	LeckCheck;
 
-	int arr[3] = {};
-	arr[5] = 30;
+	
 
 
 	{

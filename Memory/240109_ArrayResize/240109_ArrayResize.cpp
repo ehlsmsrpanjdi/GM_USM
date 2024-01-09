@@ -76,6 +76,9 @@ public:
 
             for (int i = 0; i < TempSize; i++)
             {
+                if (NumValue <= i) {
+                    break;
+                }
                 ArrPtr[i] = TempPtr[i];
             }
             delete[] TempPtr;
@@ -117,11 +120,11 @@ int main()
 
 
     // 리사이즈 값은 얼마든지 변경될 수 있다.
-    NewArray.ReSize(10);
+    NewArray.ReSize(3);
     // ?는 무슨값이 들어가 있어도 괜찮다.
     // [0][1][2][3][4][?][?][?][?][?]
 
-    for (size_t i = 0; i < NewArray.Num(); i++)
+    for (int i = 0; i < NewArray.Num(); i++)
     {
         std::cout << NewArray[i] << std::endl;
     }
