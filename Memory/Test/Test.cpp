@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <ConsoleEngine/EngineDebug.h>
+#include <ConsoleEngine/EngineDebug.h>
 
 
 class IntArray
