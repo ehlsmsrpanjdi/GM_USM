@@ -24,6 +24,7 @@ public:
     ~IntArray()
     {
         Release();
+        TempRelease();
     }
     // 디폴트 대입연산자
     void operator=(const IntArray& _Other)
