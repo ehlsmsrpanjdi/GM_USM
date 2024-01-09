@@ -2,124 +2,99 @@
 //
 
 #include <iostream>
-#include <ConsoleEngine/EngineDebug.h>
-#include <ConsoleEngine/EngineDebug.h>
-
-
-class IntArray
-{
-	// private: 디폴트 접근제한 지정자
+template <typename T>
+class test {
 public:
-	// 디폴트 생성자
-	IntArray(int _Size)
-	{
-		ReSize(_Size);
+
+	T GetValue() {
+		return Value;
 	}
 
-	// 디폴트 복사 생성자
-	IntArray(const IntArray& _Other)
-	{
-		ReSize(_Other.NumValue);
-
-		NumValue = _Other.NumValue;
-		for (int i = 0; i < NumValue; ++i) {
-			if (nullptr != _Other.ArrPtr) {
-				ArrPtr[i] = _Other.ArrPtr[i];
-			}
-		}
-	}
-	// 디폴트 소멸자
-	~IntArray()
-	{
-		Release();
-	}
-	// 디폴트 대입연산자
-	void operator=(const IntArray& _Other)
-	{
-		NumValue = _Other.NumValue;
-		for (int i = 0; i < NumValue; ++i) {
-			ArrPtr[i] = _Other.ArrPtr[i];
-		}
+	void SetValue(T _Value) {
+		Value = _Value;
 	}
 
-	int& operator[](int _Count)
-	{
-		return ArrPtr[_Count];
-	}
+	T Value;
 
-	int& Test(int _Count)
-	{
-		return ArrPtr[_Count];
-	}
-
-	int Num()
-	{
-		return NumValue;
-	}
-
-	void ReSize(int _Size)
-	{
-		if (0 >= _Size)
-		{
-			MsgBoxAssert("배열의 크기가 0일수 없습니다");
-		}
-
-		NumValue = _Size;
-
-		if (nullptr != ArrPtr)
-		{
-			Release();
-		}
-
-		ArrPtr = new int[_Size];
-	}
-
-	void Release()
-	{
-		if (nullptr != ArrPtr)
-		{
-			delete[] ArrPtr;
-			ArrPtr = nullptr;
-		}
-	}
-
-private:
-	int NumValue = 0;
-	int* ArrPtr = nullptr;
 };
 
 
+class test1 {
+public:
+
+	int Value;
+
+	int GetIndex() {
+		return Value;
+	}
+};
+
+class test2 {
+public:
+
+	test1* Value;
 
 
-int main()
-{
-	LeckCheck;
+};
 
-	
+int main() {
+	test<int>* A1 = new test<int>[10];
 
 
+	test<int>* A2 = new test<int>[10];
+
+
+
+	for (int i = 0; i < 10; i++)
 	{
-		IntArray NewArray0 = IntArray(5);
-		IntArray NewArray1 = IntArray(5);
-
-		NewArray0 = NewArray1;
-
-		NewArray0.~IntArray();
-		NewArray1.~IntArray();
+		A1[i].SetValue(i);
+		A2[i].SetValue(i);
 	}
 
+
+
+	test<test<int>*>* B = new test<test<int>*>[2];
+	B[0].SetValue(A1);
+	B[1].SetValue(A2);
+
+	int* A3 = new int[10];
+	int** B1 = new int* [2];
+	B1[0] = A3;
+	B1[0][3] = 10;
+
+	//이거 위와 아래 둘다 똑같은 거다.
+
+
+	for (int i = 0;  i < 2; i++)
 	{
-		IntArray NewArray0 = IntArray(5);
-		IntArray NewArray1 = IntArray(NewArray0);
+		for (int j = 0;  j < 10;  j++)
+		{
+			B[i].GetValue()[j].SetValue(0);
+			// B[i] => <test<int>*> B  
+			// B[i].GetValue() => *A
+			// 그런데 B[i][j]가 안되는 이유는 둘이 타입이 달라서 그렇다.
+			// 메소드 오버로딩해주면 문제없이 될 것이다.
+			// B[i].GetValue()[j] => A
+			// B[i].GetValue()[j].SetValue(0) => A.Value = 0
+
+		}
 	}
 
-	// 내가 만든 클래스이기 때문에
-	// 배열이 아니었기 때문에
-	// 배열의 기능들을 해결해줘야 한다.
 
-	// 1. 대입이 안된다. => 해결
-	// 2. 크기를 동적으로 바꿀수 없다.
-	// 3. 그 크기를 알수도 없다. 알수는 있는데 불편해
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			std::cout << B[i].GetValue()[j].GetValue() << "기입 후" << std::endl;
+			// B => <test<int>*> *B
+			// B[i] => test<int>* B => *A  
+			// 그런데 B[i][j]가 안되는 이유는 둘이 타입이 달라서 그렇다.
+			// 메소드 오버로딩해주면 문제없이 될 것이다.
+			// B[i].GetValue() => *A
+			// B[i].GetValue().[j] = A
+			// B[i].GetValue()[j].GetValue() = A.Value()
 
-	// NewArray0.~IntArray();
+		}
+	}
 }
+
