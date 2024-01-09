@@ -81,8 +81,7 @@ public:
                 }
                 ArrPtr[i] = TempPtr[i];
             }
-            delete[] TempPtr;
-            TempPtr = nullptr;
+            TempRelease();
         }
         else {
             ArrPtr = new int[_Size];
@@ -97,6 +96,14 @@ public:
         {
             delete[] ArrPtr;
             ArrPtr = nullptr;
+        }
+    }
+
+    void TempRelease() {
+        if (nullptr != TempPtr)
+        {
+            delete[] TempPtr;
+            TempPtr = nullptr;
         }
     }
 
@@ -120,7 +127,7 @@ int main()
 
 
     // 리사이즈 값은 얼마든지 변경될 수 있다.
-    NewArray.ReSize(3);
+    NewArray.ReSize(10);
     // ?는 무슨값이 들어가 있어도 괜찮다.
     // [0][1][2][3][4][?][?][?][?][?]
 
