@@ -58,10 +58,11 @@ int main()
 
     while (true) {
         std::cout << CurNode->Value << std::endl;
-        if (nullptr == CurNode->Next) {
+        CurNode = CurNode->Next;
+        if (nullptr == CurNode) {
             break;
         }
-        CurNode = CurNode->Next;
+
     }
     // CurNode 만 가지고
     // 나머지 모든 값을 출력하세요.
