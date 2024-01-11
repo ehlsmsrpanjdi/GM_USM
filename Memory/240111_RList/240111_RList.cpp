@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
 #include <ConsoleEngine/EngineDebug.h>
+#include <ConsoleEngine/EngineDebug.h>
 
 typedef int DataType;
 
@@ -249,7 +250,7 @@ private:
 
 int main()
 {
-	LeakCheck;
+	LeckCheck;
 
 	{
 		std::cout << "std ¸®½ºÆ®" << std::endl;
