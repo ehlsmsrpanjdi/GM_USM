@@ -139,7 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseMap.cpp" />
+    <ClCompile Include="Castle.cpp" />
+    <ClCompile Include="Forest.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="NameEntity.cpp" />
+    <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="Town.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\testengine\testengine.vcxproj">
@@ -148,6 +157,17 @@
     <ProjectReference Include="..\TestPhysics\TestPhysics.vcxproj">
       <Project>{ffa115df-4b35-4fe6-80e0-4369db8700f0}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseMap.h" />
+    <ClInclude Include="Castle.h" />
+    <ClInclude Include="Forest.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="NameEntity.h" />
+    <ClInclude Include="NPC.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Town.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
