@@ -22,6 +22,13 @@ public:
 
 };
 class MyMap {
+public:
+	bool Containers(const KeyType& _Key) {
+		if (Root == nullptr) {
+			return false;
+		}
+		Root->ContainerNode(_Key);
+	}
 private:
 	class MapNode {
 	public:
@@ -54,8 +61,19 @@ private:
 			return;
 		}
 
-		bool ContainerNode(KeyType _Key) {
-			Root.key
+		bool ContainerNode(const KeyType& _Key) {
+			if (this->Pair.Key == _Key) {
+				return true;
+			}
+			if (this->Pair.Key > _Key) {
+				if (this->LeftChild != nullptr)
+					return this->LeftChild->ContainerNode(_Key);
+			}
+			if (this->Pair.Key < _Key) {
+				if (this->RightChild != nullptr)
+					return this->RightChild->ContainerNode(_Key);
+			}
+			return false;
 		}
 	};
 public:
@@ -73,6 +91,20 @@ public:
 		Root->insertNode(/*Root, */NewNode);
 	}
 
+	class iterator {
+	public:
+		iterator() {
+
+		}
+		iterator(MapNode* _Node)
+			:CurNode(_Node)
+		{
+
+		}
+
+	private:
+		MapNode* CurNode = nullptr;
+	};
 
 private:
 	MapNode* Root = nullptr;
