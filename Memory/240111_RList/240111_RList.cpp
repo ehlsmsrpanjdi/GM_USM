@@ -116,7 +116,6 @@ public:
 
 		PrevNode->Next = NewNode;
 		NextNode->Prev = NewNode;
-
 	}
 
 	reverse_iterator rerase(reverse_iterator& _Iter)

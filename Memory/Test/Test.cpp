@@ -1,24 +1,100 @@
-﻿// Node.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
+﻿#include <iostream>
+#include <map>
+#include <ConsoleEngine/EngineDebug.h>
+#include "Test.h"
 
-#include <iostream>
-#include "NameEntity.h"
+typedef int KeyType;
+typedef int DataType;
 
-// 자료구조의 메모리의 2가지 형태중 하나로서
-// 어떠한 데이터가 자기자신의 데이터의 참조형을 n개 가지면 
-// 그걸 노드구조라고 한다.
 
-class A {
-	int* a = new int();
-	int* b = new int();
+class MyPair {
+public:
+	MyPair() {
+
+	}
+	MyPair(KeyType _Key, DataType _Data)
+		:Key(_Key)
+		, Data(_Data)
+	{
+	}
+	KeyType Key = KeyType();
+	DataType Data = DataType();
+
 };
+class MyMap {
+private:
+	class MapNode {
+	public:
+		MapNode() {
 
+		}
+		MyPair Pair;
+		MapNode* Parent = nullptr;
+		MapNode* RightChild = nullptr;
+		MapNode* LeftChild = nullptr;
+
+		void insertNode(MapNode* _Node) {
+			_Node->Parent = this;
+
+			if (this->Pair.Key > _Node->Pair.Key) {
+				if (this->LeftChild == nullptr) {
+					this->LeftChild = _Node;
+					return;
+				}
+				this->LeftChild->insertNode(_Node);
+			}
+
+			if (this->Pair.Key < _Node->Pair.Key) {
+				if (this->RightChild == nullptr) {
+					this->RightChild = _Node;
+					return;
+				}
+				this->RightChild->insertNode(_Node);
+			}
+			return;
+		}
+
+		bool ContainerNode(KeyType _Key) {
+			Root.key
+		}
+	};
+public:
+	MyMap() {
+
+	}
+	//삽입만 해줄 것인데, const가 안 붙을 이유가 없다.
+	void insert(const MyPair& _MyPair) {
+		MapNode* NewNode = new MapNode();
+		NewNode->Pair = _MyPair;
+		if (Root == nullptr) {
+			Root = NewNode;
+			return;
+		}
+		Root->insertNode(/*Root, */NewNode);
+	}
+
+
+private:
+	MapNode* Root = nullptr;
+};
 int main()
 {
-	_CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF | _CRTDBG_ALLOC_MEM_DF);
+	LeckCheck;
 
-	A *a = new A();
+	{
+		std::cout << "내 맵" << std::endl;
+		//      Key   Value
+		MyMap NewMap = MyMap();
+		// 오름차순 작은수 => 큰수로 정렬이 됩니다.
+		NewMap.insert(MyPair(10, 0));
+		NewMap.insert(MyPair(5, 0));
+		NewMap.insert(MyPair(15, 0));
+		NewMap.insert(MyPair(12, 99));
+		NewMap.insert(MyPair(3, 0));
+		NewMap.insert(MyPair(7, 0));
 
-	delete a;
+
+
+
+	}
 }
-
