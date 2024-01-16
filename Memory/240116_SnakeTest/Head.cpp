@@ -13,30 +13,27 @@ void Head::Update()
 	}
 
 	int Select = _getch();
+	IsMove = false;
 
-	// InputCount = _kbhit();
-
-	// X Y
-	// 1 0
 	this->SetPrevLocation(GetPos());
 	switch (Select)
 	{
-		
+
 	case 'A':
 	case 'a':
-		AddPos(Left);
+		PosChange(Left);
 		break;
 	case 'S':
 	case 's':
-		AddPos(Down);
+		PosChange(Down);
 		break;
 	case 'W':
 	case 'w':
-		AddPos(Up);
+		PosChange(Up);
 		break;
 	case 'D':
 	case 'd':
-		AddPos(Right);
+		PosChange(Right);
 		break;
 	case '1':
 		GetCore()->EngineEnd();
@@ -50,20 +47,29 @@ void Head::Update()
 		MsgBoxAssert("먹을수 있는 바디가 존재하지 않습니다.");
 		return;
 	}
-	
-	while (nullptr != Back) {
-		Back->SetPos(this->PrevLocation);
-		Back = Back->GetBack();
-	}
-	
-	Body* CurBody = BodyManager::GetCurBody();
 
+	Move(this->IsMove);
+
+	Body* CurBody = BodyManager::GetCurBody();
 	if (CurBody->GetPos() == GetPos())
 	{
-		Back = CurBody;
+		AddPart(CurBody);
 		BodyManager::ResetBody();
 	}
 
-
-	
 }
+
+void Head::PosChange(int _X, int _Y)
+{
+	int2 TempPos = { _X,  _Y };
+	int2 ReverseTempPos = { -1 * _X, -1 * _Y };
+
+	if (GetPrevDirection() == ReverseTempPos) {
+		return;
+	}
+	AddPos(TempPos);
+	SetPrevDirection(TempPos);
+	IsMove = true;
+
+}
+
