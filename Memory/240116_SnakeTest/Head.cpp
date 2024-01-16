@@ -18,9 +18,10 @@ void Head::Update()
 
 	// X Y
 	// 1 0
-
+	this->SetPrevLocation(GetPos());
 	switch (Select)
 	{
+		
 	case 'A':
 	case 'a':
 		AddPos(Left);
@@ -49,7 +50,12 @@ void Head::Update()
 		MsgBoxAssert("먹을수 있는 바디가 존재하지 않습니다.");
 		return;
 	}
-
+	
+	while (nullptr != Back) {
+		Back->SetPos(this->PrevLocation);
+		Back = Back->GetBack();
+	}
+	
 	Body* CurBody = BodyManager::GetCurBody();
 
 	if (CurBody->GetPos() == GetPos())
@@ -57,5 +63,7 @@ void Head::Update()
 		Back = CurBody;
 		BodyManager::ResetBody();
 	}
+
+
 	
 }
