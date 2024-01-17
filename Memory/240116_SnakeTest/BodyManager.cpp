@@ -64,7 +64,7 @@ void BodyManager::Update()
 		CreateBodyPos = *StartIter;
 
 		// 랜덤한 위치가 지정됐으므로
-		CurBody = GetCore()->CreateObject<Body>();
+		CurBody = GetCore()->CreateObject<Body>(1,0);
 		CurBody->SetRenderChar('#');
 		CurBody->SetPos(CreateBodyPos);
 	}

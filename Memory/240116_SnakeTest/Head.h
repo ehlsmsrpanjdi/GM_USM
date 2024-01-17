@@ -14,7 +14,6 @@ protected:
 	void PosChange(int _X, int _Y);
 
 	void IsHit();
-	bool IsMove = false;
 
 };
 

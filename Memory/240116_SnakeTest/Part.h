@@ -41,8 +41,8 @@ public:
 	}
 
 	void AddPart(Part* _Part);
-	
-	void Move(bool _IsMove);
+
+	void Move();
 
 protected:
 	Part* Front = nullptr;

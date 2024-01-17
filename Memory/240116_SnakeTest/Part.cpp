@@ -18,10 +18,9 @@ void Part::AddPart(Part* _Part)
 	}
 }
 
-void Part::Move(bool _IsMove)
+void Part::Move()
 {
 	{
-		if (_IsMove) {
 			if (nullptr != GetBack()) {
 				Part* TempBack = GetBack();
 				while (nullptr != TempBack) {
@@ -31,6 +30,5 @@ void Part::Move(bool _IsMove)
 					TempBack = TempBack->GetBack();
 				}
 			}
-		}
 	}
 }

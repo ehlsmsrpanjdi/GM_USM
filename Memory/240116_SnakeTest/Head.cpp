@@ -13,7 +13,6 @@ void Head::Update()
 	}
 
 	int Select = _getch();
-	IsMove = false;
 
 	this->SetPrevLocation(GetPos());
 	switch (Select)
@@ -48,8 +47,6 @@ void Head::Update()
 		return;
 	}
 
-	Move(this->IsMove);
-
 	Body* CurBody = BodyManager::GetCurBody();
 	if (CurBody->GetPos() == GetPos())
 	{
@@ -63,13 +60,22 @@ void Head::PosChange(int _X, int _Y)
 {
 	int2 TempPos = { _X,  _Y };
 	int2 ReverseTempPos = { -1 * _X, -1 * _Y };
-
+	int2 CurPos = GetPos();
 	if (GetPrevDirection() == ReverseTempPos) {
 		return;
 	}
+
+	int2 NextPos = CurPos + TempPos;
+	if (NextPos.X < 0 || NextPos.X >= GetCore()->Screen.GetScreenX()) {
+		return;
+	}
+	if (NextPos.Y < 0 || NextPos.Y >= GetCore()->Screen.GetScreenY()) {
+		return;
+	}
+
 	AddPos(TempPos);
 	SetPrevDirection(TempPos);
-	IsMove = true;
+	Move();
 	IsHit();
 }
 
