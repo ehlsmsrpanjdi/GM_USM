@@ -70,6 +70,22 @@ void Head::PosChange(int _X, int _Y)
 	AddPos(TempPos);
 	SetPrevDirection(TempPos);
 	IsMove = true;
-
+	IsHit();
 }
+
+void Head::IsHit()
+{
+	int2 CurPos = this->GetPos();
+	Part* NextPart = this->GetBack();
+	while (nullptr != NextPart) {
+		if (NextPart->GetPos() == CurPos) {
+			GetCore()->EngineEnd();
+			return;
+		}
+		NextPart = NextPart->GetBack();
+	}
+	
+	return;
+}
+
 
