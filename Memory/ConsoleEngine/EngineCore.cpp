@@ -178,5 +178,16 @@ void EngineCore::Start()
             }
         }
         AllUpdateObject.clear();
+        
+        {
+            std::map<int, ConsoleUpdater*>::iterator OrderStartIter = AllManager.begin();
+            std::map<int, ConsoleUpdater*>::iterator OrderEndIter = AllManager.end();
+            for (; OrderStartIter != OrderEndIter; ++OrderStartIter)
+            {
+                ConsoleUpdater* Object = OrderStartIter->second;
+                delete Object;
+            }
+        }
     }
+
 }
