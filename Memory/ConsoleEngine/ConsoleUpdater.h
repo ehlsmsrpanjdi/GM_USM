@@ -9,7 +9,7 @@ public:
 		return DeathValue;
 	}
 
-	class EngineCore* GetCore()
+	EngineCore* GetCore()
 	{
 		return Core;
 	}
